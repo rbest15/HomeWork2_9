@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,52 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HomeWork2_9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-xq-Ubl">
+                                <rect key="frame" x="40" y="84" width="334" height="351"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="Q3l-Cq-afX">
+                                <rect key="frame" x="86" y="475" width="242" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXK-Oq-8E7">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                        <state key="normal" title="Set image"/>
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y27-le-e3E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhu-3c-yQY">
+                                        <rect key="frame" x="202" y="0.0" width="40" height="30"/>
+                                        <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="shareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z5B-bd-bJZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="t6b-xq-Ubl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="3bl-qs-kjo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6b-xq-Ubl" secondAttribute="trailing" constant="40" id="Hiu-6o-Spg"/>
+                            <constraint firstItem="Q3l-Cq-afX" firstAttribute="top" secondItem="t6b-xq-Ubl" secondAttribute="bottom" constant="40" id="N2I-GJ-5rF"/>
+                            <constraint firstItem="Q3l-Cq-afX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xmd-UK-35g"/>
+                            <constraint firstItem="t6b-xq-Ubl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="fTX-gE-Ycl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Q3l-Cq-afX" secondAttribute="bottom" constant="357" id="hFj-bV-rNZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="t6b-xq-Ubl" id="bcG-k8-4Yp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
         </scene>
     </scenes>
 </document>

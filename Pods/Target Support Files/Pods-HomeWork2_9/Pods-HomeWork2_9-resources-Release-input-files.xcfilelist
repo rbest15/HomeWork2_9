@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-HomeWork2_9/Pods-HomeWork2_9-resources.sh
+${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle
+${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
+${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/VK-ios-sdk/VKSdkResources.bundle
