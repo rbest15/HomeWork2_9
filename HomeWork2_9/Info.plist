@@ -10,13 +10,30 @@
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Skillbox.HomeWork2-9</string>
+    
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>vk.com</key>
+            <dict>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+    
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb226942925268568</string>
-				<string>vk7427495</string>
+				<string>vk7472137</string>
 				<string>com.googleusercontent.apps.1084893895308-o8ksmcrtfrimc2k9h1ussvpj43j60sir</string>
 			</array>
 		</dict>

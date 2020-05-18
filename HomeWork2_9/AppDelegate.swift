@@ -10,26 +10,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application( _ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? ) -> Bool {
         ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
-        VKSdk.initialize(withAppId: "7427495")?.uiDelegate = self
         GIDSignIn.sharedInstance()?.clientID = "1084893895308-o8ksmcrtfrimc2k9h1ussvpj43j60sir.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
         
-        TWTRTwitter.sharedInstance().start(withConsumerKey: "rdfghdfg", consumerSecret: "dgfhdfgh")
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "123456", consumerSecret: "123456")
+        VKSdk.initialize(withAppId: "7472137")?.uiDelegate = self
         return true
         
     }
     
-    func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        ApplicationDelegate.shared.application( application, open: url, sourceApplication: sourceApplication, annotation: annotation )
         
-        ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
-        
-        VKSdk.processOpen(url, fromApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+        VKSdk.processOpen(url, fromApplication: sourceApplication)
         
         GIDSignIn.sharedInstance()?.handle(url)
         
-        TWTRTwitter.sharedInstance().application(app, open: url, options: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! [AnyHashable : Any])
-
+        TWTRTwitter.sharedInstance().application(application, open: url, options: [:])
         return true
+    }
+}
+
+
+
+extension AppDelegate: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("ДОСТУП К ГУГЛ ПОЛУЧЕН", user.authentication.accessToken)
     }
 }
 
@@ -47,11 +53,5 @@ extension AppDelegate : VKSdkUIDelegate {
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
         
-    }
-}
-
-extension AppDelegate: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        print("ДОСТУП К ГУГЛ ПОЛУЧЕН", user.authentication.accessToken)
     }
 }

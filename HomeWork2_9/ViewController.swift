@@ -9,7 +9,7 @@ import Social
 import AppAuth
 
 
-@IBDesignable class ViewController: UIViewController {
+class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     let fbLogin = FBLoginButton()
@@ -26,7 +26,8 @@ import AppAuth
         super.viewDidLoad()
         configureStackViewWithLogins()
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        VKSdk.initialize(withAppId: "7427495")?.register(self)
+        VKSdk.initialize(withAppId: "7472137")?.register(self)
+        
     }
     @IBAction func pickImage(_ sender: Any) {
         let ipc = UIImagePickerController()
@@ -76,7 +77,18 @@ import AppAuth
     }
     
     @objc func loginToVK(){
-        VKSdk.authorize(["friends"])
+        VKSdk.wakeUpSession([]) { (state, error) in
+            switch state {
+            case .authorized:
+                print("Already auth")
+            case .initialized:
+                VKSdk.authorize([])
+            default:
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+                    print("???")
+                }
+            }
+        }
     }
     
 }
@@ -89,7 +101,7 @@ extension ViewController : LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("FB LOG OUT")
     }
-    
+
     
 }
 
@@ -114,3 +126,5 @@ extension ViewController : UIImagePickerControllerDelegate & UINavigationControl
         dismiss(animated: true, completion: nil)
     }
 }
+
+
